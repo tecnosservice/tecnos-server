@@ -2,7 +2,7 @@
 FROM openjdk:17-jdk-slim
 
 # Metadata as described above
-LABEL maintainer="floredenis907@yahoo.com"
+LABEL maintainer="tecnosservice818@gmail.com"
 LABEL version="1.0"
 LABEL description="Docker image for tecnos-server Spring Boot application"
 
