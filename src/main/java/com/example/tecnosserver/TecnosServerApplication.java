@@ -21,6 +21,7 @@ public class TecnosServerApplication {
         return new BCryptPasswordEncoder();
     }
 
+    
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
