@@ -6,7 +6,7 @@ import com.example.tecnosserver.user.dto.RegisterResponse;
 import com.example.tecnosserver.user.dto.UserDTO;
 import com.example.tecnosserver.user.model.User;
 import com.example.tecnosserver.user.service.UserCommandService;
-import com.example.tecnosserver.user.service.UserQuerryService;
+import com.example.tecnosserver.user.service.UserQueryService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -25,14 +25,14 @@ import static com.example.tecnosserver.utils.Utils.JWT_TOKEN_HEADER;
 public class UserControllerServer {
 
     private final UserCommandService userCommandService;
-    private final UserQuerryService userQuerryService;
+    private final UserQueryService userQueryService;
     private final AuthenticationManager authenticationManager;
     private final JWTTokenProvider jwtTokenProvider;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest user) {
         authenticate(user.email(), user.password());
-        User loginUser = userQuerryService.findByEmail(user.email()).get();
+        User loginUser = userQueryService.findByEmail(user.email()).get();
         User userPrincipal = getUser(loginUser);
 
         HttpHeaders jwtHeader = getJwtHeader(userPrincipal);
@@ -51,7 +51,7 @@ public class UserControllerServer {
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> register(@RequestBody UserDTO userDTO) {
         this.userCommandService.addUser(userDTO);
-        User userPrincipal = userQuerryService.findByEmail(userDTO.email()).get();
+        User userPrincipal = userQueryService.findByEmail(userDTO.email()).get();
         HttpHeaders jwtHeader = getJwtHeader(userPrincipal);
         RegisterResponse registerResponse = new RegisterResponse(
                 jwtHeader.getFirst(JWT_TOKEN_HEADER),

@@ -1,8 +1,9 @@
 package com.example.tecnosserver.user.service;
 
+import com.example.tecnosserver.exception.exception.AlreadyExistsException;
+import com.example.tecnosserver.exception.exception.NotFoundException;
 import com.example.tecnosserver.system.security.UserRole;
 import com.example.tecnosserver.user.dto.UserDTO;
-import com.example.tecnosserver.user.exception.UserAlreadyExistsException;
 import com.example.tecnosserver.user.exception.UserNotFoundException;
 import com.example.tecnosserver.user.model.User;
 import com.example.tecnosserver.user.repo.UserRepo;
@@ -18,7 +19,7 @@ import java.util.Optional;
 @Transactional
 @AllArgsConstructor
 public class UserCommandServiceImpl implements UserCommandService {
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
     private BCryptPasswordEncoder passwordEncoder;
 
 
@@ -39,7 +40,7 @@ public class UserCommandServiceImpl implements UserCommandService {
                     .build();
             userRepo.saveAndFlush(x);
         } else {
-            throw new UserAlreadyExistsException("User with email " + userDTO.email() + " already exists");
+            throw new AlreadyExistsException("User with email " + userDTO.email() + " already exists");
         }
     }
 
@@ -56,7 +57,7 @@ public class UserCommandServiceImpl implements UserCommandService {
             x.setPassword(userDTO.password());
             userRepo.saveAndFlush(x);
         } else {
-            throw new UserNotFoundException("User with email " + email + " not found");
+            throw new NotFoundException("User with email " + email + " not found");
         }
 
     }
@@ -68,7 +69,7 @@ public class UserCommandServiceImpl implements UserCommandService {
         if (user.isPresent()) {
             userRepo.delete(user.get());
         } else {
-            throw new UserNotFoundException("User with email " + email + " not found");
+            throw new NotFoundException("User with email " + email + " not found");
         }
 
     }
@@ -82,7 +83,7 @@ public class UserCommandServiceImpl implements UserCommandService {
             x.setProfileUrl(profileUrl);
             userRepo.saveAndFlush(x);
         } else {
-            throw new UserNotFoundException("User with email " + email + " not found");
+            throw new NotFoundException("User with email " + email + " not found");
         }
     }
 }

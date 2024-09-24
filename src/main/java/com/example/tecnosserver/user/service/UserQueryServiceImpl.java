@@ -1,6 +1,6 @@
 package com.example.tecnosserver.user.service;
 
-import com.example.tecnosserver.user.exception.ListEmptyException;
+import com.example.tecnosserver.exception.exception.NotFoundException;
 import com.example.tecnosserver.user.model.User;
 import com.example.tecnosserver.user.repo.UserRepo;
 import org.springframework.stereotype.Service;
@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserQuerryServiceImpl implements UserQuerryService {
-    UserRepo userRepo;
+public class UserQueryServiceImpl implements UserQueryService {
+    private final UserRepo userRepo;
 
 
-    public UserQuerryServiceImpl(UserRepo userRepo) {
+    public UserQueryServiceImpl(UserRepo userRepo) {
         this.userRepo = userRepo;
     }
 
@@ -23,7 +23,7 @@ public class UserQuerryServiceImpl implements UserQuerryService {
         if (user.isPresent()) {
             return user;
         } else {
-            throw new ListEmptyException("User with email " + email + " not found");
+            throw new NotFoundException("User with email " + email + " not found");
         }
     }
 }
