@@ -1,6 +1,6 @@
-package com.example.tecnosserver.exception.model;
+package com.example.tecnosserver.exceptions.model;
 
-import com.example.tecnosserver.exception.exception.AppException;
+import com.example.tecnosserver.exceptions.exception.AppException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

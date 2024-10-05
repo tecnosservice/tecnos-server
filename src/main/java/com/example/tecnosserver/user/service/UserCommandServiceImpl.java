@@ -1,7 +1,7 @@
 package com.example.tecnosserver.user.service;
 
-import com.example.tecnosserver.exception.exception.AlreadyExistsException;
-import com.example.tecnosserver.exception.exception.NotFoundException;
+import com.example.tecnosserver.exceptions.exception.AlreadyExistsException;
+import com.example.tecnosserver.exceptions.exception.NotFoundException;
 import com.example.tecnosserver.system.security.UserRole;
 import com.example.tecnosserver.user.dto.UserDTO;
 import com.example.tecnosserver.user.exception.UserNotFoundException;

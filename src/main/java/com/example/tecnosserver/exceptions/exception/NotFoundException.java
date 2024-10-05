@@ -1,4 +1,4 @@
-package com.example.tecnosserver.exception.exception;
+package com.example.tecnosserver.exceptions.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,6 +1,6 @@
 package com.example.tecnosserver.user.service;
 
-import com.example.tecnosserver.exception.exception.NotFoundException;
+import com.example.tecnosserver.exceptions.exception.NotFoundException;
 import com.example.tecnosserver.user.model.User;
 import com.example.tecnosserver.user.repo.UserRepo;
 import org.springframework.stereotype.Service;
