@@ -4,7 +4,6 @@ import com.example.tecnosserver.exceptions.exception.AlreadyExistsException;
 import com.example.tecnosserver.exceptions.exception.NotFoundException;
 import com.example.tecnosserver.system.security.UserRole;
 import com.example.tecnosserver.user.dto.UserDTO;
-import com.example.tecnosserver.user.exception.UserNotFoundException;
 import com.example.tecnosserver.user.model.User;
 import com.example.tecnosserver.user.repo.UserRepo;
 import jakarta.transaction.Transactional;
